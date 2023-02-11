@@ -3,4 +3,5 @@ b = 3
 print(a+b)
 
 test = "a"
+dalsi_test = "ahoj"
 
