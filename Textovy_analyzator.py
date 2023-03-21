@@ -44,17 +44,15 @@ password = input("Please enter your password: ")
 
 print("python projekt1.py")
 
-while True:
-    if registrated.get(user) != password:
-        print(f"Username: {user}\nPassword: {password}")
-        print(f"Incorrect username: \"{user}\" or password: \"{password}\". \nTerminating the program...")
-        quit()
-    else:
-        print(f"Username: {user}\nPassword: {password}")
-        print(oddelovac * 43)
-        print(f"Welcome to the app, {user}.\nWe have 3 texts to be analyzed.")
-        print(oddelovac * 43)        
-        break
+if registrated.get(user) != password:
+    print(f"Username: {user}\nPassword: {password}")
+    print(f"Incorrect username: \"{user}\" or password: \"{password}\". \nTerminating the program...")
+    quit()
+else:
+    print(f"Username: {user}\nPassword: {password}")
+    print(oddelovac * 43)
+    print(f"Welcome to the app, {user}.\nWe have 3 texts to be analyzed.")
+    print(oddelovac * 43)
 
 selected_text = input("Enter a number. Only 1-3 to be selected: ")
 
@@ -78,137 +76,44 @@ words_text_final = words_text_cleared.split()
 pocet_slov = len(words_text_final)
 print(f"There are {pocet_slov} words in the selected text.")
 
-# počet slov začínajících velkým písmenem
-pocet_prvnivelke = 0
+pocet_prvnivelke = 0  # počet slov začínajících velkým písmenem
+vsechna_velka = 0     # počet slov psaných velkými písmeny
+vsechna_mala = 0      # počet slov psaných malými písmeny
+pocet_cisel = 0       # počet čísel (ne cifer)
+suma_cisel = []       # sumu všech čísel (ne cifer) v textu.
+
 for pocet in words_text_final:
     if pocet.istitle():
         pocet_prvnivelke += 1
-print(f"There are {pocet_prvnivelke} titlecase words.")
-
-# počet slov psaných velkými písmeny
-vsechna_velka = 0
-for velka in words_text_final:
-    if velka.isupper() and velka.isalpha():
+    elif pocet.isupper() and pocet.isalpha():
         vsechna_velka += 1
-print(f"There are {vsechna_velka} uppercase words.")
-
-# počet slov psaných malými písmeny
-vsechna_mala = 0
-for mala in words_text_final:
-    if mala.islower() and mala.isalpha():
+    elif pocet.islower() and pocet.isalpha():
         vsechna_mala += 1
-print(f"There are {vsechna_mala} lowercase words.")
-
-# počet čísel (ne cifer)
-pocet_cisel = 0
-for pocet in words_text_final:
-    if pocet.isdigit():
+    elif pocet.isdigit():
         pocet_cisel += 1
-print(f"There are {pocet_cisel} numeric strings.")
+        suma_cisel.append(int(pocet))
 
-# sumu všech čísel (ne cifer) v textu.
-suma_cisel = []
-for cisla in words_text_final:
-    if cisla.isdigit():
-        suma_cisel.append(int(cisla))
+print(f"There are {pocet_prvnivelke} titlecase words.")
+print(f"There are {vsechna_velka} uppercase words.")
+print(f"There are {vsechna_mala} lowercase words.")
+print(f"There are {pocet_cisel} numeric strings.")
 print("The sum of all the numbers:", sum(suma_cisel))
 print(oddelovac * 43)
 
-delka1 = []
-delka2 = []
-delka3 = []
-delka4 = []
-delka5 = []
-delka6 = []
-delka7 = []
-delka8 = []
-delka9 = []
-delka10 = []
-delka11 = []
-delka12 = []
-delka13 = []
-delka14 = []
-
-for graf in words_text_final:
-        if len(graf) == 1:
-            delka1.append(graf)
-        elif len(graf) == 2:
-            delka2.append(graf)
-        elif len(graf) == 3:
-            delka3.append(graf)
-        elif len(graf) == 4:
-            delka4.append(graf)
-        elif len(graf) == 5:
-            delka5.append(graf)
-        elif len(graf) == 6:
-            delka6.append(graf)
-        elif len(graf) == 7:
-            delka7.append(graf)
-        elif len(graf) == 8:
-            delka8.append(graf)
-        elif len(graf) == 9:
-            delka9.append(graf)
-        elif len(graf) == 10:
-            delka10.append(graf)
-        elif len(graf) == 11:
-            delka11.append(graf)
-        elif len(graf) == 12:
-            delka12.append(graf)
-        elif len(graf) == 13:
-            delka13.append(graf)
-        else:
-            delka14.append(graf)
-
-sloupec1 = "*" * len(delka1)
-sloupec2 = "*" * len(delka2)
-sloupec3 = "*" * len(delka3)
-sloupec4 = "*" * len(delka4)
-sloupec5 = "*" * len(delka5)
-sloupec6 = "*" * len(delka6)
-sloupec7 = "*" * len(delka7)
-sloupec8 = "*" * len(delka8)
-sloupec9 = "*" * len(delka9)
-sloupec10 = "*" * len(delka10)
-sloupec11 = "*" * len(delka11)
-sloupec12 = "*" * len(delka12)
-sloupec13 = "*" * len(delka13)
-sloupec14 = "*" * len(delka14)
-
-nr_sloupec1 = len(sloupec1)
-nr_sloupec2 = len(sloupec2)
-nr_sloupec3 = len(sloupec3)
-nr_sloupec4 = len(sloupec4)
-nr_sloupec5 = len(sloupec5)
-nr_sloupec6 = len(sloupec6)
-nr_sloupec7 = len(sloupec7)
-nr_sloupec8 = len(sloupec8)
-nr_sloupec9 = len(sloupec9)
-nr_sloupec10 = len(sloupec10)
-nr_sloupec11 = len(sloupec11)
-nr_sloupec12 = len(sloupec12)
-nr_sloupec13 = len(sloupec13)
-nr_sloupec14 = len(sloupec14)
-
 lenght = "LEN|"
-occurences = "   OCCURENCES   "
+occurences = "       OCCURENCES       "
 nr_ = "|NR."
 
 print(f"{lenght}{occurences}{nr_}")
 print(oddelovac * 43)
 
-print(f"""  1|{sloupec1.ljust(1)} {nr_sloupec1} 
-  2|{sloupec2.ljust(1)} {nr_sloupec2} 
-  3|{sloupec3.ljust(1)} {nr_sloupec3} 
-  4|{sloupec4.ljust(1)} {nr_sloupec4} 
-  5|{sloupec5.ljust(1)} {nr_sloupec5} 
-  6|{sloupec6.ljust(1)} {nr_sloupec6}
-  7|{sloupec7.ljust(1)} {nr_sloupec7} 
-  8|{sloupec8.ljust(1)} {nr_sloupec8}
-  9|{sloupec9.ljust(1)} {nr_sloupec9} 
- 10|{sloupec10.ljust(1)} {nr_sloupec10}
- 11|{sloupec11.ljust(1)} {nr_sloupec11} 
- 12|{sloupec12.ljust(1)} {nr_sloupec12}
- 13|{sloupec13.ljust(1)} {nr_sloupec13} 
- 14|{sloupec14.ljust(1)} {nr_sloupec14} 
-"""
-)
+slovnik = {}
+
+for delka_slova in words_text_final:
+    if len(delka_slova) not in slovnik:
+        slovnik[len(delka_slova)] = 1
+    else:
+        slovnik[len(delka_slova)] += 1
+
+for j, i in sorted(slovnik.items()):
+    print("{:3}|".format(j), "{:23}|".format("*" * i), "{}".format(i))
